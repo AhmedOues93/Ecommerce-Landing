@@ -1,7 +1,11 @@
-function getItemCard  () {
-  const card = JSON.parse(localStorage.getItem ("card")) || [];  //get the item card from localstorage
+const STORAGE_KEY = "cart";
+
+export function getCartItems() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 }
 
-function addItemCard () {
-    localStorage.setItem("card", JSON.stringify(card));
-} ö
+export function addItemToCart(product) {
+  const cart = getCartItems();
+  cart.push(product);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+}
